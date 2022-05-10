@@ -30,9 +30,7 @@ const Navbar = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <div class="navbar-end">
-                    <a class="btn">Get started</a>
-                </div>
+
             </div>
         </div>
     );
