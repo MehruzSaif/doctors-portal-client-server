@@ -7,13 +7,13 @@ const Navbar = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/appointment'>Appointment</Link></li>
         <li><Link to='/review'>Review</Link></li>
-        <li><Link to='/contact'>Contact Us</Link></li>
+        <li><Link to='/contact'>Contact</Link></li>
         <li><Link to='/about'>About</Link></li>
         <li><Link to='/login'>Login</Link></li>
     </>
 
     return (
-        <div>
+        <div className='max-auto'>
             <div class="navbar bg-base-100">
                 <div class="navbar-start">
                     <div class="dropdown">
@@ -26,7 +26,7 @@ const Navbar = () => {
                     </div>
                     <a class="btn btn-ghost normal-case text-xl">Doctors Portal</a>
                 </div>
-                <div class="navbar-center hidden lg:flex">
+                <div class="navbar-end hidden lg:flex">
                     <ul class="menu menu-horizontal p-0">
                         {menuItems}
                     </ul>
