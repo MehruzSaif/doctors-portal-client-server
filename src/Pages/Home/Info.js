@@ -6,10 +6,10 @@ import marker from '../../assets/icons/marker.svg';
 
 const Info = () => {
     return (
-        <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
-            <InfoCard img={clock}></InfoCard>
-            <InfoCard img={marker}></InfoCard>
-            <InfoCard img={phone}></InfoCard>
+        <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 px-20'>
+            <InfoCard cardTitle='Opening Hours' bgClass="bg-gradient-to-r from-secondary to-primary" img={clock}></InfoCard>
+            <InfoCard cardTitle='Visit our Location' bgClass="bg-neutral" img={marker}></InfoCard>
+            <InfoCard cardTitle='Contact us now' bgClass="bg-gradient-to-r from-secondary to-primary" img={phone}></InfoCard>
         </div>
     );
 };
