@@ -7,7 +7,7 @@ const Footer = () => {
     const year = today.getFullYear();
 
     return (
-        <div className='max-w-7xl mx-auto px-12'
+        <div className='lg:max-w-7xl lg:mx-auto lg:px-12'
             style={{
                 background: `url(${footer})`,
                 backgroundSize: 'cover'
