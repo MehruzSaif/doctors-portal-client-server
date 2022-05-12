@@ -37,7 +37,7 @@ const Testimonials = () => {
                     <h2 className='text-3xl'>What Our Patients Video</h2>
                 </div>
                 <div>
-                    <img src={quote} className='lg:w-48 w-24' alt="" />
+                    <img src={quote} className='lg:w-48 w-24 animated' alt="" />
                 </div>
             </div>
 
