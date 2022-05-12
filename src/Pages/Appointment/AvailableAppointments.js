@@ -1,9 +1,10 @@
+import { format } from 'date-fns';
 import React from 'react';
 
-const AvailableAppointments = () => {
+const AvailableAppointments = ({date}) => {
     return (
         <div>
-           Available Appointments on 
+           Available Appointments on {format(date, 'PP')}
         </div>
     );
 };
