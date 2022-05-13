@@ -1,5 +1,6 @@
 import { format } from 'date-fns';
 import React, { useEffect, useState } from 'react';
+import BookingModal from './BookingModal';
 import Service from './Service';
 
 const AvailableAppointments = ({ date }) => {
@@ -14,7 +15,7 @@ const AvailableAppointments = ({ date }) => {
 
     return (
         <div>
-            <h4 className='text-xl text-secondary text-center'>Available Appointments on {format(date, 'PP')}</h4>    
+            <h4 className='text-xl text-secondary text-center my-14 font-bold'>Available Appointments on {format(date, 'PP')}</h4>    
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
@@ -25,6 +26,7 @@ const AvailableAppointments = ({ date }) => {
                     ></Service>)
                 }
             </div>
+            {treatment && <BookingModal treatment={treatment}></BookingModal>}
         </div >
     );
 };
