@@ -1,18 +1,37 @@
 import React from 'react';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useForm } from "react-hook-form";
 
 const Login = () => {
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
 
-    if (user) {
-        console.log(user);
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
+    let signInError;
+
+    if (loading || gLoading) {
+        return <button class="btn loading">loading</button>
     }
+
+    if (error || gError) {
+        signInError = <p>{error?.mesage || gError?.message}</p>
+    }
+
+    if (gUser) {
+        console.log(gUser);
+    }
+
 
     const onSubmit = data => {
         console.log(data);
+        signInWithEmailAndPassword(data.email, data.password);
     }
 
     return (
@@ -44,9 +63,9 @@ const Login = () => {
                             />
 
                             <label class="label">
-                            {errors.email?.type === 'required' && <span class="label-text-alt text-red-500">{errors.email.message}</span>}
-                            {errors.email?.type === 'pattern' && <span class="label-text-alt text-red-500">{errors.email.message}</span>}
-                                
+                                {errors.email?.type === 'required' && <span class="label-text-alt text-red-500">{errors.email.message}</span>}
+                                {errors.email?.type === 'pattern' && <span class="label-text-alt text-red-500">{errors.email.message}</span>}
+
                             </label>
 
                         </div>
@@ -74,13 +93,15 @@ const Login = () => {
                             />
 
                             <label class="label">
-                            {errors.password?.type === 'required' && <span class="label-text-alt text-red-500">{errors.password.message}</span>}
-                            {errors.password?.type === 'minLength' && <span class="label-text-alt text-red-500">{errors.password.message}</span>}
-                                
+                                {errors.password?.type === 'required' && <span class="label-text-alt text-red-500">{errors.password.message}</span>}
+                                {errors.password?.type === 'minLength' && <span class="label-text-alt text-red-500">{errors.password.message}</span>}
+
                             </label>
 
                         </div>
 
+
+                         {signInError}                                       
                         <input className='btn w-full max-w-xs' type="submit" value="Login" />
                     </form>
 
