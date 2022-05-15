@@ -23,7 +23,7 @@ const BookingModal = ({ date, treatment, setTreatment }) => {
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
 
-                    <label for="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2 text-white">✕</label>
+                    <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2 text-white">✕</label>
 
                     <h3 className="font-bold text-lg text-secondary text-center">{name}</h3>
 
@@ -32,13 +32,16 @@ const BookingModal = ({ date, treatment, setTreatment }) => {
 
                         <select name='slot' className="select select-bordered w-full max-w">
                             {
-                                slots.map(slot => <option value={slot}>{slot}</option>)
+                                slots.map((slot, index) => <option 
+                                    key={index}
+                                    value={slot}
+                                    >{slot}</option>)
                             }
                             
                         </select>
 
-                        <input type="text" name='' disabled value={user?.displayName} className="input input-bordered w-full max-w" />
-                        <input type="email" disabled value={user?.email} className="input input-bordered w-full max-w" />
+                        <input type="text" name='' disabled value={user?.displayName || ''} className="input input-bordered w-full max-w" />
+                        <input type="email" disabled value={user?.email || ''} className="input input-bordered w-full max-w" />
                         <input type="phone" placeholder="Phone No." className="input input-bordered w-full max-w" />
                         <input type="submit" value='Submit' className="btn btn-accent text-white w-full max-w" />
                     </form>
