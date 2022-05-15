@@ -7,11 +7,36 @@ const BookingModal = ({ date, treatment, setTreatment }) => {
     const { _id, name, slots } = treatment;
 
     const [user, loading, error] = useAuthState(auth);
+    const formattedDate = format(date, 'PP');
 
     const handleBooking = e => {
         e.preventDefault();
         const slot = e.target.slot.value;
         console.log(_id, slot, name);
+
+        const booking = {
+            treatmentId: _id,
+            treatment: name,
+            date: formattedDate,
+            slot,
+            patient: user.email,
+            patientName: user.displayName,
+            phone: e.target.phone.value
+        }
+
+        fetch('http://localhost:5000/booking', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+        .then(res => res.json())
+        .then(data => {
+            // to close the modal
+            console.log(data);
+            setTreatment(null)
+        })
 
         // To close the modal
         setTreatment(null);
@@ -32,12 +57,12 @@ const BookingModal = ({ date, treatment, setTreatment }) => {
 
                         <select name='slot' className="select select-bordered w-full max-w">
                             {
-                                slots.map((slot, index) => <option 
+                                slots.map((slot, index) => <option
                                     key={index}
                                     value={slot}
-                                    >{slot}</option>)
+                                >{slot}</option>)
                             }
-                            
+
                         </select>
 
                         <input type="text" name='' disabled value={user?.displayName || ''} className="input input-bordered w-full max-w" />
