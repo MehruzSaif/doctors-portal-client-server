@@ -18,8 +18,8 @@ const MyAppointments = () => {
     return (
         <div>
             <h2>My Appointments: {appointments.length}</h2>
-            <div class="overflow-x-auto mt-10">
-                <table class="table w-full">
+            <div className="overflow-x-auto mt-10">
+                <table className="table w-full">
                     {/* <!-- head --> */}
                     <thead>
                         <tr>
@@ -30,6 +30,7 @@ const MyAppointments = () => {
                             <th>Treatement</th>
                         </tr>
                     </thead>
+                    
                     <tbody>
                         {/* <!-- row 1 --> */}
                         {
