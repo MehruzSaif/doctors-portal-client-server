@@ -6,11 +6,11 @@ import auth from '../../../firebase.init';
 
 const Navbar = () => {
 
-    const [user, loading, error] = useAuthState(auth);
+    const [user] = useAuthState(auth);
 
     const logout = () => {
         signOut(auth);
-      };
+    };
 
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
@@ -44,6 +44,11 @@ const Navbar = () => {
                     </ul>
                 </div>
 
+                <div className="navbar-end">
+                    <label tabIndex="1" for="dashboard-sidebar" className="btn btn-ghost lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                    </label>
+                </div>
             </div>
         </div>
     );
