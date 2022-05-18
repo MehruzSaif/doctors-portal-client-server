@@ -9,8 +9,30 @@ const AddDoctor = () => {
 
     const { data: services, isLoading } = useQuery('services', () => fetch('http://localhost:5000/service').then(res => res.json()))
 
+    const imgStorageKey = 'ff80d7d39744e8bbef0749f30f2f77f9';
+
+    /**
+     * 3 ways to store images
+     * 1. Third party storage 
+     * 2. Your own storage in your own server (file system)
+     * 3. Database: MongoDB
+     * 
+     * YUP: to validate size. Search YUP file validation for react hook form
+    */
+
     const onSubmit = async data => {
-        console.log('data', data);
+        const image = data.image[0];
+        const formData = new FormData();
+        formData.append('image', image);
+        const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`;
+        fetch (url, {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.json())
+        .then(result => {
+            console.log('imgbb', result);
+        })
     }
 
     if (isLoading) {
@@ -28,6 +50,7 @@ const AddDoctor = () => {
 
                         <form onSubmit={handleSubmit(onSubmit)}>
 
+                            {/* Name */}
                             <div className="form-control w-full max-w-xs">
                                 <label className="label">
                                     <span className="label-text">Name</span>
@@ -51,7 +74,7 @@ const AddDoctor = () => {
 
                             </div>
 
-
+                            {/* email */}
                             <div className="form-control w-full max-w-xs">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -81,13 +104,13 @@ const AddDoctor = () => {
                             </div>
 
 
-
-                            <div className="form-control w-full max-w-xs mb-10">
+                            {/* specialty */}
+                            <div className="form-control w-full max-w-xs mb-3">
                                 <label className="label">
                                     <span className="label-text">Specialization</span>
                                 </label>
 
-                                <select {...register('specialty')} class="select w-full max-w-xs">
+                                <select {...register('specialty')} class="select input-bordered w-full max-w-xs">
                                     {
                                         services.map(service => <option
                                             key={service._id}
@@ -95,6 +118,30 @@ const AddDoctor = () => {
                                         >{service.name}</option>)
                                     }
                                 </select>
+                            </div>
+
+
+                            {/* image */}
+                            <div className="form-control w-full max-w-xs">
+                                <label className="label">
+                                    <span className="label-text">Photo</span>
+                                </label>
+
+                                <input type="file"
+                                    className="input input-bordered w-full max-w-xs"
+                                    {...register("image", {
+                                        required: {
+                                            value: true,
+                                            message: 'Image is Required'
+                                        }
+                                    })}
+                                />
+
+                                <label className="label">
+                                    {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+
+                                </label>
+
                             </div>
 
 
