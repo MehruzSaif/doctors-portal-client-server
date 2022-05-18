@@ -30,7 +30,7 @@ const Contact = () => {
                     placeholder='Your message'
                     rows={6}
                 ></textarea>
-                <PrimaryButton>Submit</PrimaryButton>
+                <button className="btn btn-primary uppercase text-white font-bold bg-gradient-to-r from-secondary to-primary">Submit</button>
             </div>
         </div>
     );

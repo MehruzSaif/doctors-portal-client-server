@@ -5,6 +5,7 @@ import bg from '../../assets/images/bg.png';
 import './Banner.css';
 
 const Banner = () => {
+
     return (
         <div className="hero min-h-screen"
             style={{
