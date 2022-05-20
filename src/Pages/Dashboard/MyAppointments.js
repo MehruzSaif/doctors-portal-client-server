@@ -36,7 +36,7 @@ const MyAppointments = () => {
 
     return (
         <div>
-            <h2>My Appointments: {appointments.length}</h2>
+            <h2 className='ml-3'>My Appointments: {appointments.length}</h2>
             <div className="overflow-x-auto mt-10">
                 <table className="table w-full">
                     {/* <!-- head --> */}

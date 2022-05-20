@@ -69,7 +69,7 @@ const AddDoctor = () => {
 
     return (
         <div>
-            <h2 className='text-2xl mb-10'>Add a new doctor</h2>
+            <h2 className='text-2xl mb-10 ml-3'>Add a new doctor</h2>
 
             <div className='flex justify-center items-center'>
                 <div className="card w-96 bg-base-100 shadow-xl">
