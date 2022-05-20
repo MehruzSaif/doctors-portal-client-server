@@ -22,8 +22,8 @@ const ManageDoctors = () => {
         <div>
             <h2 className='text-2xl mb-10'>Manage Doctors: {doctors.length}</h2>
 
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
                     {/* <!-- head --> */}
                     <thead>
                         <tr>

@@ -26,8 +26,8 @@ const DoctorRow = ({ doctor, index, refetch, setDeletingDoctor }) => {
         <tr>
             <th>{index + 1}</th>
             <td>
-                <div class="avatar">
-                    <div class="w-16 mask mask-squircle">
+                <div className="avatar">
+                    <div className="w-16 mask mask-squircle">
                         <img src={img} alt={name} />
                     </div>
                 </div>
@@ -35,8 +35,8 @@ const DoctorRow = ({ doctor, index, refetch, setDeletingDoctor }) => {
             <td>{name}</td>
             <td>{specialty}</td>
             <td>
-                <label onClick={() => setDeletingDoctor(doctor)} for="delete-confirm-modal" class="btn btn-xs btn-error">Delete</label>
-                
+                <label onClick={() => setDeletingDoctor(doctor)} for="delete-confirm-modal" className="btn btn-xs btn-error">Delete</label>
+
             </td>
         </tr>
     );
