@@ -36,7 +36,7 @@ const DoctorRow = ({ doctor, index, refetch, setDeletingDoctor }) => {
             <td>{specialty}</td>
             <td>
                 <label onClick={() => setDeletingDoctor(doctor)} for="delete-confirm-modal" class="btn btn-xs btn-error">Delete</label>
-                <button onClick={() => handleDelete(email)} class="btn btn-xs btn-error text-black">Delete</button>
+                
             </td>
         </tr>
     );
