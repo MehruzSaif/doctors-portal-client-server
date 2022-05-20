@@ -10,11 +10,11 @@ const AvailableAppointments = ({ date }) => {
     const [treatment, setTreatment] = useState(null);
 
     const formattedDate = format(date, 'PP');
-    const {data: services, isLoading, refetch} = useQuery(['available', formattedDate], () => fetch(`https://protected-journey-37132.herokuapp.com/available?date=${formattedDate}`)
+    const { data: services, isLoading, refetch } = useQuery(['available', formattedDate], () => fetch(`https://protected-journey-37132.herokuapp.com/available?date=${formattedDate}`)
         .then(res => res.json())
     )
 
-    if(isLoading) {
+    if (isLoading) {
         return <Loading></Loading>
     }
 
